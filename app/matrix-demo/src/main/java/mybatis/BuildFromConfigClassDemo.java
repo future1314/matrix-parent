@@ -4,6 +4,9 @@
  */
 package mybatis;
 
+import com.google.gson.Gson;
+import mybatis.mapper.BlogMapper;
+import mybatis.object.Blog;
 import org.apache.ibatis.datasource.pooled.PooledDataSource;
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.session.Configuration;
@@ -12,11 +15,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
-
-import com.google.gson.Gson;
-
-import mybatis.mapper.BlogMapper;
-import mybatis.object.Blog;
 
 /**
  * 通过java类配置MyBatis
@@ -27,8 +25,9 @@ import mybatis.object.Blog;
 public class BuildFromConfigClassDemo {
 
     /**
-     * 
-     * @param args
+     * main方法启动器
+     *
+     * @param args 参数集合
      */
     public static void main(String[] args) {
         // mybatis默认实现的两个数据源

@@ -14,6 +14,7 @@
         <module>app/matrix-demo</module>
         <module>app/matrix-web</module>
         <module>app/matrix-language</module>
+        <module>app/springBoot</module>
     </modules>
 
     <properties>

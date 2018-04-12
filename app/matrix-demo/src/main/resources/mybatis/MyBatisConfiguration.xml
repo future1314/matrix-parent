@@ -30,3 +30,26 @@
     </mappers>
 
 </configuration>
+
+
+        <!--
+
+        properties元素可以指定resource，指定的是properties文件的位置
+
+        MyBatis实现了三种数据源类型：
+        UnpooledDataSource数据源（非池化的）
+        PooledDataSource数据源（池化的）
+        JNDI数据源
+
+
+        环境元素可以配置多个环境，同时可以指定默认的环境
+
+        环境配置包括事物管理配置和数据源配置
+
+        SQL映射配置文件
+
+
+        Q1:如何指定默认的环境，是否只能是通过修改配置文件来实现？
+        Q2:事物管理器怎么配置？
+        Q3:数据源除了默认的两个之外是不是可以使用其他的数据源？
+        -->

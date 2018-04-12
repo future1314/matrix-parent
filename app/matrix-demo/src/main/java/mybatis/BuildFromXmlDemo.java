@@ -4,17 +4,14 @@
  */
 package mybatis;
 
-import java.io.IOException;
-import java.io.InputStream;
-
+import mybatis.object.Blog;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import com.google.gson.Gson;
-
-import mybatis.object.Blog;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * 从 XML 中构建 SqlSessionFactory
@@ -23,6 +20,7 @@ import mybatis.object.Blog;
  * @version $Id: BuildFromXmlDemo.java, v 0.1 2018年3月1日 下午4:55:25 zyy43688 Exp $
  */
 public class BuildFromXmlDemo {
+
     public static void main(String[] args) throws IOException {
         // 配置文件载入
         String resource = "mybatis/MyBatisConfiguration.xml";
@@ -38,6 +36,6 @@ public class BuildFromXmlDemo {
         Blog blog = sqlSession.selectOne("mybatis.example.BlogMapper.selectBlog", 1);
 
         // 输出结果
-        System.out.println(new Gson().toJson(blog));
+        System.out.println(Serializer.gson.toJson(blog));
     }
 }

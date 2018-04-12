@@ -12,4 +12,6 @@ package zhangyuyao.proxy.dynamic;
  */
 public interface Subject {
     void request(String msg);
+
+    void response(String msg, String name);
 }

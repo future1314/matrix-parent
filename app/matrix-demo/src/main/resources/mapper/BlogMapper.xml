@@ -11,28 +11,42 @@
 </mapper>
 
 
-<!--
-Mapper的namespace属性用来定义命名空间
+        <!--
+        Mapper的namespace属性用来定义命名空间
 
-每一条语句都应该有一个唯一的id属性进行标识
+        每一条语句都应该有一个唯一的id属性进行标识
 
-resultType结果类型，指的是语句执行的结果直接转换为对应的类型
+        resultType结果类型，指的是语句执行的结果直接转换为对应的类型
 
-这个很重要，是ORM框架最直接的体现，他定义了记录到对象的映射关系
+        这个很重要，是ORM框架最直接的体现，他定义了记录到对象的映射关系
 
-语句中的参数通过#{parameterName}引入
+        语句中的参数通过#{parameterName}引入
 
 
-XML 映射文件
-查询（select）
-更新（insert，delete，update）
-参数（parameters）
-结果集（result maps）
-自动映射（auto-mapping）
-cache
+        XML 映射文件
+        查询（select）
+        更新（insert，delete，update）
+        参数（parameters）
+        结果集（result maps）
+        自动映射（auto-mapping）
+        cache
 
-其实就是两种不同的映射模式
+        其实就是两种不同的映射模式
 
-一种是带连接池的一种是不带连接池的
+        一种是带连接池的一种是不带连接池的
 
--->
+        -->
+
+        <!--
+
+        resultMap
+        insert：增
+        delete：删
+        update：改
+        select：查
+
+        语句的嵌套
+        动态生成SQL，既然要动态生成SQL那就需要指定怎样动态？
+        既然是动态就一定是有条件的！
+
+        -->
