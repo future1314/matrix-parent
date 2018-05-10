@@ -17,6 +17,7 @@ class VolatileExample {
     private void read() {
         //int dummy = b;  
         while (x != 5) {
+            System.out.println('1');
         }
     }
 

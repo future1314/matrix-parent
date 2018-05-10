@@ -13,13 +13,8 @@ public class VolatileDemo {
     /**
      * 标记值
      */
-    boolean flag = true;
+    private boolean flag = true;
 
-    /**
-     * 主方法
-     *
-     * @param args
-     */
     public static void main(String[] args) throws InterruptedException {
         VolatileDemo volatileDemo = new VolatileDemo();
 
@@ -28,23 +23,23 @@ public class VolatileDemo {
         Thread.sleep(1000);
 
         new Thread(volatileDemo::setFlag).start();
+
+        System.out.println("结束！");
     }
 
-    public void setFlag() {
+    private void setFlag() {
         this.flag = false;
         System.out.println("已经被修改为了false！");
     }
 
-    public boolean isFlag() {
-        return flag;
-    }
-
-    public void read(){
-        while(flag){
-            //System.out.println("ahahaha");
-            //System.out.println(flag);
+    private void read() {
+        while (flag) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            //System.out.println(123);
         }
     }
 }
-
-/*为什么这个地方的修改对主线程是里面可见的？*/
