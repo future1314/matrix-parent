@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--matrix.xsd-->
+<xsd:schema xmlns="http://zhangyuyao.com/schema/matrix"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://zhangyuyao.com/schema/matrix">
+
+    <xsd:complexType name="matrixType">
+        <xsd:attribute name="id" type="xsd:ID">
+            <xsd:annotation>
+                <xsd:documentation>
+                    <![CDATA[ 唯一性标识 ]]>
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="description" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation>
+                    <![CDATA[ 描述信息 ]]>
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:element name="matrix" type="matrixType">
+        <xsd:annotation>
+            <xsd:documentation>
+                <![CDATA[ 自定义标签 ]]>
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+</xsd:schema>

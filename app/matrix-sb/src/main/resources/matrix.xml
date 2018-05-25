@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:matrix="http://zhangyuyao.com/schema/matrix"
+       xsi:schemaLocation=
+               "http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+               http://zhangyuyao.com/schema/matrix http://zhangyuyao.com/schema/matrix/matrix.xsd ">
+    <matrix:matrix id="zhangyuyao" description="测试自定义元素解析功能！"/>
+</beans>

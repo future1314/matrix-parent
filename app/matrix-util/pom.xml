@@ -20,6 +20,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
+        <Jedis.version>2.9.0</Jedis.version>
     </properties>
 
     <dependencies>
@@ -33,6 +34,12 @@
             <groupId>com.ly.flight.tmc.hotelresourceapi</groupId>
             <artifactId>hotelresourceapi-integration</artifactId>
             <version>2018050303_hotel_distribution</version>
+        </dependency>
+        <!-- Jedis -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${Jedis.version}</version>
         </dependency>
     </dependencies>
 

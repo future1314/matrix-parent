@@ -11,7 +11,7 @@ import java.lang.reflect.Field;
  * @version $Id: Demo.java, v 0.1 2018年5月4日 上午10:47:10 zyy43688 Exp $
  */
 public class Demo {
-    private Integer num = 100;
+    private int num = 100;
 
     /**
      * 
