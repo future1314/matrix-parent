@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>matrix-demo</artifactId>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>matrix-demo</name>
     <url>http://maven.apache.org</url>
@@ -70,6 +70,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>5.0.2.RELEASE</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
         </dependency>
@@ -88,4 +94,9 @@
             <version>3.4.10</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <!--此处配置的是打包文件的名称-->
+        <finalName>provider</finalName>
+    </build>
 </project>

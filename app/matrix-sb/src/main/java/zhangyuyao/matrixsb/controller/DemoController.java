@@ -4,6 +4,9 @@
  */
 package zhangyuyao.matrixsb.controller;
 
+import java.util.Map;
+import java.util.Properties;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -27,6 +30,20 @@ public class DemoController {
 
     @Resource
     DemoService demoService;
+
+    @RequestMapping(value = "getSysProperties")
+    @ResponseBody
+    public String getSysProperties() {
+        Properties properties = System.getProperties();
+
+        StringBuilder sb = new StringBuilder();
+
+        for (Map.Entry e : properties.entrySet()) {
+            sb.append(e.getKey()).append("=").append(e.getValue()).append("\n");
+        }
+
+        return sb.toString();
+    }
 
     @RequestMapping(value = "/enter", method = { RequestMethod.POST })
     @ResponseBody

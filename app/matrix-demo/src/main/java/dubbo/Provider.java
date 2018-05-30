@@ -15,6 +15,6 @@ public class Provider {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] { "dubbo.xml" });
         context.start();
         // press any key to exit
-        System.in.read();
+//        System.in.read();
     }
 }
