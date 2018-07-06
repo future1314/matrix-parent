@@ -4,10 +4,9 @@
  */
 package zhangyuyao.matrixsb.customer;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author zyy43688
@@ -25,5 +24,7 @@ public class CustomerDemo {
         Matrix matrix = (Matrix) context.getBean("zhangyuyao");
 
         log.info("description: {}", matrix.getDescription());
+
+        log.info("staffName is {}", ((Staff) context.getBean("zhangyuyao.matrixsb.customer.Staff#0")).getStaffName());
     }
 }

@@ -1,0 +1,5 @@
+<root>
+    <item name='java.util.concurrent.ExecutorService java.util.concurrent.Future&lt;T&gt; submit(java.lang.Runnable, T)'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+</root>

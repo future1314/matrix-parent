@@ -12,7 +12,7 @@ public class ZookeeperDemo {
             @Override
             public void process(WatchedEvent watchedEvent) {
                 //log.info("链接回调{}", watchedEvent.getPath());
-                System.out.println("zzzzzzzzzzzzz");
+                System.out.println("matrix");
             }
         }, 0, null);
 

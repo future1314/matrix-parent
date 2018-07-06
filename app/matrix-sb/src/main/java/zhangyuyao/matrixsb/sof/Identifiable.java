@@ -9,6 +9,8 @@ import java.io.Serializable;
 import org.apache.commons.collections4.Transformer;
 
 /**
+ * 实体ID领域模型，所有业务领域模型应实现该接口，提供ID的获取和设置功能
+ * 
  * @author zyy43688
  * @version $Id: Identifiable.java, v 0.1 2018年5月22日 下午5:43:18 zyy43688 Exp $
  */

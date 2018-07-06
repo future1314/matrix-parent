@@ -12,7 +12,7 @@ package zhangyuyao.thread;
  */
 public class ThreadDemo {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.out.println("start");
 
         Thread thread;
@@ -27,6 +27,14 @@ public class ThreadDemo {
 
         // 继承实现
         thread = new ThreadSubclass();
+        thread.start();
+
+        thread.join();
+
+        while (thread.getState() != Thread.State.TERMINATED) {
+
+        }
+        // 方法启动
         thread.start();
 
         System.out.println("end");

@@ -70,6 +70,45 @@ public class ReadExcel {
 
         System.out.println(new Gson().toJson(readExcel.getRowValues()));
 
+        generateClass(readExcel);
+    }
+
+    private static void generateClass(ReadExcel readExcel) {
+        String t = "%s private %s %s;";
+
+        List<String> keys = new ArrayList<>(readExcel.rowValues.keySet());
+
+        for (String key : keys) {
+
+            RowNode rowNode = readExcel.getRowValues().get(key);
+
+            String comment = generateComment(rowNode.getChineseName(), rowNode.getNecessary(), rowNode.getDescription()); //readExcel.getRowValues().get(key).getDescription();
+
+            String dataType = rowNode.getDataType();
+
+            String variable = rowNode.getVariableName();
+
+            System.out.println(String.format(t, comment, dataType, variable));
+        }
+    }
+
+    private static String generateComment(String chineseName, String necessary, List<String> descriptions) {
+
+        StringBuffer sb = new StringBuffer().append("\n/**").append("\n");
+
+        // 名称
+        sb.append("*").append(" ").append(chineseName).append("\n");
+
+        // 可为空
+        // sb.append(" 可为空：").append(necessary).append("\n");
+
+        for (String description : descriptions) {
+            sb.append("*").append(" ").append(description).append("\n");
+        }
+
+        sb.append("*/");
+
+        return sb.toString();
     }
 
     /**
@@ -228,20 +267,20 @@ public class ReadExcel {
      * @param cell
      * @return
      */
-    public String getCellValue(Cell cell) {
-        if (cell == null)
+        public String getCellValue(Cell cell) {
+        //            if (cell == null)
+        //                return "";
+        //            if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
+        //                return cell.getStringCellValue();
+        //            } else if (cell.getCellType() == Cell.CELL_TYPE_BOOLEAN) {
+        //                return String.valueOf(cell.getBooleanCellValue());
+        //            } else if (cell.getCellType() == Cell.CELL_TYPE_FORMULA) {
+        //                return cell.getCellFormula();
+        //            } else if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
+        //                return String.valueOf(cell.getNumericCellValue());
+        //            }
             return "";
-        if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
-            return cell.getStringCellValue();
-        } else if (cell.getCellType() == Cell.CELL_TYPE_BOOLEAN) {
-            return String.valueOf(cell.getBooleanCellValue());
-        } else if (cell.getCellType() == Cell.CELL_TYPE_FORMULA) {
-            return cell.getCellFormula();
-        } else if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
-            return String.valueOf(cell.getNumericCellValue());
         }
-        return "";
-    }
 
     /**
      * 合并单元格处理,获取合并行 

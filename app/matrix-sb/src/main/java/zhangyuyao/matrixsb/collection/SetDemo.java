@@ -24,11 +24,5 @@ public class SetDemo {
         for (String s : sets) {
             System.out.println(s);
         }
-
-        /*
-        * 
-        * 紊乱所以过度
-        * 
-        * */
     }
 }

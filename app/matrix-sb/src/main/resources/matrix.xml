@@ -6,4 +6,8 @@
                "http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                http://zhangyuyao.com/schema/matrix http://zhangyuyao.com/schema/matrix/matrix.xsd ">
     <matrix:matrix id="zhangyuyao" description="测试自定义元素解析功能！"/>
+
+    <bean id="matrix" class="zhangyuyao.matrixsb.customer.Matrix"/>
+
+    <bean class="zhangyuyao.matrixsb.customer.Staff"/>
 </beans>

@@ -132,11 +132,98 @@ public class DefaultSOFContext implements SOFContext, ApplicationContextAware, B
         return running;
     }
 
+    /**
+     * 执行MQ消费者启动
+     */
     private void onConsumerStartup() {
+        log.info("执行消费者启动");
+        Map<String, ConsumerBean> beans = springContext.getBeansOfType(ConsumerBean.class, false, true);
+        if (beans != null) {
+            try {
+
+                for (ConsumerBean bean : beans.values()) {
+                    // 创建消费者
+                    UniformEventSubscriber subscriber = createUniformEventSubscriber(bean);
+                }
+
+            } catch (Exception e) {
+                throw new RuntimeException(e.getMessage(), e);
+            }
+        }
     }
 
+    private UniformEventSubscriber createUniformEventSubscriber(ConsumerBean bean) {
+        String nameSrvAddr = getNameSrvAddr(bean);
+        ConsumeFromWhere cfw = getConsumeFromWhere(bean.getConsumeFromWhere());
+        MessageModel mm = getMessageModel(bean.getMessageModel());
+
+        //UniformEventSubscriber subscriber = new
+
+        return null;
+    }
+
+    /**
+     * 
+     * @param messageModel
+     * @return
+     */
+    private MessageModel getMessageModel(String messageModel) {
+        if (messageModel == null || messageModel.isEmpty()) {
+            return null;
+        }
+
+        return MessageModel.valueOf(messageModel);
+    }
+
+    /**
+     * 
+     * @param consumeFromWhere
+     * @return
+     */
+    private ConsumeFromWhere getConsumeFromWhere(String consumeFromWhere) {
+        if (consumeFromWhere == null || consumeFromWhere.isEmpty()) {
+            return null;
+        }
+
+        return ConsumeFromWhere.valueOf(consumeFromWhere);
+    }
+
+    /**
+     * 获取消息命名服务地址
+     *
+     * @param bean
+     * @return
+     */
+    private String getNameSrvAddr(ConsumerBean bean) {
+        String nameSrvAddr = bean.getNameSrvAddress();
+
+        if (nameSrvAddr != null && nameSrvAddr.length() > 0) {
+            return nameSrvAddr;
+        }
+
+        nameSrvAddr = appConfiguration.getPropertyValue(AppConfiguration.MQ_NAME_SERVER_ADDR);
+
+        return nameSrvAddr;
+    }
+
+    /**
+     * 执行MQ生产者启动
+     */
     private void onProducerStartup() {
-        log.info("");
+
+        log.info("启动 turbo MQ");
+
+        Map<String, UniformEventPublisher> beans = springContext.getBeansOfType(UniformEventPublisher.class, false, true);
+
+        if (beans != null) {
+            try {
+                for (UniformEventPublisher publisher : beans.values()) {
+                    publisher.start();
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e.getMessage(), e);
+            }
+        }
     }
 
     private void onContextStartup() {
