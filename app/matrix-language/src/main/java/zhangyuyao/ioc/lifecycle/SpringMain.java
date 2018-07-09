@@ -19,7 +19,7 @@ import zhangyuyao.ioc.lifecycle.bean.Staff;
 public class SpringMain {
 
     /**
-     * 
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -27,14 +27,6 @@ public class SpringMain {
 
         Staff staff = (Staff) context.getBean("zhangyuyao.ioc.lifecycle.bean.Staff#0");
 
-        log.info(staff.getName());
-
         Person person = (Person) context.getBean("person");
-
-        log.info(person.getName());
-
-        person = (Person) context.getBean("person");
-
-        log.info(person.getName());
     }
 }

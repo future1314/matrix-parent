@@ -5,11 +5,12 @@
 package zhangyuyao.ioc.lifecycle.bean;
 
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanClassLoaderAware;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.BeanFactoryAware;
-import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.*;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.lang.Nullable;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
  * @version $Id: Staff.java, v 0.1 2018年7月6日 下午3:42:33 zyy43688 Exp $
  */
 @Slf4j
-public class Staff implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware {
+public class Staff implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware, ApplicationContextAware, BeanPostProcessor, InitializingBean {
 
     private String name;
 
@@ -54,5 +55,35 @@ public class Staff implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAw
 
     private void init() {
         log.info("初始化方法被调用");
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        log.info("setApplicationContext接口被调用");
+    }
+
+    @Nullable
+    @Override
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+        log.info("postProcessBeforeInitialization 方法被调用，beanName is {}", beanName);
+        log.info("bean 是否是Staff的实例：{}", bean instanceof Staff);
+        log.info("bean 是否是BeanDefinition的实例：{}", bean instanceof BeanDefinition);
+        log.info("postProcessBeforeInitialization 方法执行结束");
+        return bean;
+    }
+
+    @Nullable
+    @Override
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+        log.info("postProcessAfterInitialization 方法被调用，beanName is {}", beanName);
+        log.info("bean 是否是Staff的实例：{}", bean instanceof Staff);
+        log.info("bean 是否是BeanDefinition的实例：{}", bean instanceof BeanDefinition);
+        log.info("postProcessAfterInitialization 方法执行结束");
+        return bean;
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        log.info("afterPropertiesSet方法被执行");
     }
 }

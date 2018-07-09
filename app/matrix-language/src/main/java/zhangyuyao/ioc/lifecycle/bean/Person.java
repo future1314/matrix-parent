@@ -10,6 +10,7 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
  * @version $Id: Person.java, v 0.1 2018年7月6日 下午4:00:38 zyy43688 Exp $
  */
 @Slf4j
-public class Person implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware {
+public class Person implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware, ApplicationContextAware {
 
     private String name;
 
@@ -52,5 +53,10 @@ public class Person implements BeanNameAware, BeanClassLoaderAware, BeanFactoryA
 
     public void init() {
         log.info("初始化方法被调用！");
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        log.info("setApplicationContext接口被调用");
     }
 }
