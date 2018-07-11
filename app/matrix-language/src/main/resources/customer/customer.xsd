@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://zhangyuyao.com/schema/customer"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://zhangyuyao.com/schema/customer">
+
+    <!--定义一个元素-->
+    <xsd:element name="reference" type="referenceType">
+        <xsd:annotation>
+            <xsd:documentation>
+                <![CDATA[ 自定义标签]]>
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <!--定义元素类型-->
+    <xsd:complexType name="referenceType">
+        <xsd:attribute name="id" type="xsd:ID"/>
+        <xsd:attribute name="description" type="xsd:string"/>
+    </xsd:complexType>
+</xsd:schema>
+
+        <!--
+        1.定义命名空间
+        2.引入命名空间
+        3.目标命名空间地址
+        -->
+
+        <!--标准模式
+        1.定义一个元素
+        2.定义元素类型
+        -->
