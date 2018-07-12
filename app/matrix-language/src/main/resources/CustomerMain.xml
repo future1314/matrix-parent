@@ -4,5 +4,12 @@
        xmlns:customer="http://zhangyuyao.com/schema/customer"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://zhangyuyao.com/schema/customer http://zhangyuyao.com/schema/customer/customer.xsd">
-    <customer:reference id="matrix" description="哎哟，卧槽！" />
+
+    <customer:reference id="matrix" description="哎哟，卧槽！"/>
+
+    <bean id="me" class="zhangyuyao.ioc.customer.bean.Me"/>
+
+    <bean id="girl" class="zhangyuyao.ioc.customer.bean.CaoBService" scope="prototype"/>
+
+    <!--<bean id="myBeanPostProcessor" class="zhangyuyao.ioc.customer.processor.MyBeanPostProcessor"/>-->
 </beans>
