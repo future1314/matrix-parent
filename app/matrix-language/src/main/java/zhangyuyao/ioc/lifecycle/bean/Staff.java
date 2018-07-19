@@ -10,6 +10,8 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.ResourceLoaderAware;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.lang.Nullable;
 
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
  * @version $Id: Staff.java, v 0.1 2018年7月6日 下午3:42:33 zyy43688 Exp $
  */
 @Slf4j
-public class Staff implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware, ApplicationContextAware, BeanPostProcessor, InitializingBean {
+public class Staff implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware, ResourceLoaderAware, ApplicationContextAware, BeanPostProcessor, InitializingBean {
 
     private String name;
 
@@ -85,5 +87,10 @@ public class Staff implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAw
     @Override
     public void afterPropertiesSet() throws Exception {
         log.info("afterPropertiesSet方法被执行");
+    }
+
+    @Override
+    public void setResourceLoader(ResourceLoader resourceLoader) {
+        log.info("resourceLoader is invoked!");
     }
 }
