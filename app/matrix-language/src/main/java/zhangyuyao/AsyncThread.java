@@ -7,7 +7,7 @@ import java.util.concurrent.*;
 
 /**
  * 多线程执行，异步获取结果
- * 
+ *
  * @author i-clarechen
  *
  */
@@ -23,7 +23,7 @@ public class AsyncThread {
 
     /**
      * 生成指定数量的线程，都放入future数组
-     * 
+     *
      * @param threadNum
      * @param fList
      */
