@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <!--首先配置一个调度器-->
+    <task:scheduler id="scheduler"/>
+
+    <!--配置任务集合-->
+    <task:scheduled-tasks scheduler="scheduler">
+        <task:scheduled ref="task" method="execute" cron="0/2 * *  * * ? "/>
+        <task:scheduled ref="anotherTask" method="execute" cron="0/2 * *  * * ? "/>
+        <task:scheduled ref="fixedDelayTask" method="execute" fixed-delay="3000"/>
+    </task:scheduled-tasks>
+
+    <!--配置任务-->
+    <bean id="task" class="spring.Task"/>
+
+    <bean id="anotherTask" class="spring.AnotherTask"/>
+
+    <bean id="fixedDelayTask" class="spring.FixedDelayTask"/>
+
+    <!--还有一些细节的东西需要处理-->
+
+</beans>
