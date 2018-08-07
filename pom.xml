@@ -16,6 +16,7 @@
         <module>app/matrix-language</module>
         <module>app/springBoot</module>
         <module>app/matrix-sb</module>
+        <module>app/matrix-xmly</module>
     </modules>
 
     <properties>
