@@ -15,6 +15,8 @@ import java.util.Set;
 import lombok.extern.slf4j.Slf4j;
 
 /**
+ * 测试MySQL的最大连接数
+ *
  * @author zyy43688
  * @version $Id: ConnectionDemo.java, v 0.1 2018年5月23日 下午4:20:13 zyy43688 Exp $
  */
@@ -84,3 +86,5 @@ public class ConnectionDemo {
         return connection;
     }
 }
+
+// 数据库连接池
