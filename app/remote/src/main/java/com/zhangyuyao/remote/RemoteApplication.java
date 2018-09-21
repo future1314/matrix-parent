@@ -6,10 +6,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 @SpringBootApplication
+@ImportResource(locations = "classpath:spring-rabbitmq.xml")
 public class RemoteApplication extends WebMvcConfigurationSupport {
 
 	public static void main(String[] args) {

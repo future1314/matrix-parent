@@ -4,18 +4,15 @@
  */
 package com.zhangyuyao.remote.controller;
 
-import javax.annotation.Resource;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.zhangyuyao.remote.biz.DemoService;
 import com.zhangyuyao.remote.biz.RequestThreadHandler;
-
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 /**
  * @author zyy43688
@@ -26,23 +23,26 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DemoController {
 
+    @Autowired
+    private AmqpTemplate amqpTemplate;
+
     @Resource
     DemoService demoService;
 
-    @RequestMapping(value = "/enter", method = { RequestMethod.POST })
+    @RequestMapping(value = "/enter", method = {RequestMethod.POST})
     @ResponseBody
     public String enter() {
         demoService.increment();
         return "This is a test!";
     }
 
-    @RequestMapping(value = "/get", method = { RequestMethod.POST })
+    @RequestMapping(value = "/get", method = {RequestMethod.POST})
     @ResponseBody
     public int get() {
         return demoService.get();
     }
 
-    @RequestMapping(value = "/reset", method = { RequestMethod.POST })
+    @RequestMapping(value = "/reset", method = {RequestMethod.POST})
     @ResponseBody
     public int reset(@RequestParam(value = "num") int num) {
         return demoService.resetToNum(num);
@@ -50,7 +50,7 @@ public class DemoController {
 
     private static int count;
 
-    @RequestMapping(value = "/test", method = { RequestMethod.POST })
+    @RequestMapping(value = "/test", method = {RequestMethod.POST})
     @ResponseBody
     public String test() {
         log.info("this is {} invoke！", count++);
@@ -61,5 +61,12 @@ public class DemoController {
     @ResponseBody
     public int threadLocal() {
         return RequestThreadHandler.getHashCode();
+    }
+
+    @GetMapping("/mq")
+    @ResponseBody
+    public boolean mq() {
+        amqpTemplate.convertAndSend("openapi.tag.delete.exchange.fanout", "", "matrix");
+        return true;
     }
 }
