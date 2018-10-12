@@ -37,6 +37,6 @@ public class ThreadIdFilter implements Filter {
 
     @Override
     public void destroy() {
-
+        // 这个地方可以获取到所谓的session
     }
 }
