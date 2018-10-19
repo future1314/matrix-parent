@@ -17,6 +17,11 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!--拦截器配置如下-->
+    <mvc:interceptors>
+        <bean class="zhangyuyao.config.MyHandlerInterceptorFirst"/>
+        <bean class="zhangyuyao.config.MyHandlerInterceptorSecond"/>
+    </mvc:interceptors>
 </beans>
 
         <!--笔记-->

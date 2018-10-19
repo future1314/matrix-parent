@@ -35,7 +35,6 @@ public class OnlyMemberDemo {
                 return false;
             }
         }
-
         return true;
     }
 }
