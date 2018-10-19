@@ -115,6 +115,16 @@
         <load-on-startup>2</load-on-startup>
     </servlet>
 
+    <servlet>
+        <servlet-name>servletDemoThird</servlet-name>
+        <servlet-class>zhangyuyao.servlet.ServletDemoThird</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>servletDemoThird</servlet-name>
+        <url-pattern>/servletDemoThird</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>dispatcherServlet</servlet-name>
         <url-pattern>/</url-pattern>
