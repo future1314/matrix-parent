@@ -28,7 +28,7 @@ public class FactoryBeanDemo {
         EarnMoneyServiceImpl earnMoneyService = (EarnMoneyServiceImpl) context.getBean("earnMoneyService");
 
         // 获取ServiceFactory实例
-        ServiceFactory serviceFactory = (ServiceFactory) context.getBean("&earnMoneyService");
+        ServiceFactory serviceFactory = (ServiceFactory) context.getBean("&earnMoneyService");//获取factoryBean
 
         log.info("earnMoneyService's name is {}", earnMoneyService.getName());
         log.info("serviceFactory's name is {}", serviceFactory.getName());

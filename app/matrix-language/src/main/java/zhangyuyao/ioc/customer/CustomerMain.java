@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import lombok.extern.slf4j.Slf4j;
-import zhangyuyao.ioc.customer.bean.CaoBService;
+import zhangyuyao.ioc.customer.bean.GirlFactoryBean;
 import zhangyuyao.ioc.customer.bean.Girl;
 import zhangyuyao.ioc.customer.bean.Me;
 import zhangyuyao.ioc.customer.bean.Reference;
@@ -29,12 +29,14 @@ public class CustomerMain {
 
         Me me = (Me) context.getBean("me");
 
-        CaoBService caoBService = (CaoBService) context.getBean("&girl");
+        GirlFactoryBean girlFactoryBean = (GirlFactoryBean) context.getBean("&girl");//取得factoryBean
 
         Girl girl = (Girl) context.getBean("girl");
 
         Girl copyGirl = (Girl) context.getBean("girl");
-
-        log.info("{}", girl.equals(copyGirl));
+        log.info("me={}",me);
+        log.info("reference={}",reference.toString());
+        log.info("girlFactoryBean={}",girlFactoryBean);
+        log.info("girl={},copyGirl={},{}",girl,copyGirl,girl.equals(copyGirl));
     }
 }

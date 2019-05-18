@@ -21,6 +21,6 @@ public class CustomerNamespaceHandler extends NamespaceHandlerSupport {
     @Override
     public void init() {
         // 元素解析器
-        registerBeanDefinitionParser("reference", new ReferenceBeanDefinitionParse(Reference.class));
+        registerBeanDefinitionParser("reference", new ReferenceBeanDefinitionParse(Reference.class));//reference 元素名字
     }
 }

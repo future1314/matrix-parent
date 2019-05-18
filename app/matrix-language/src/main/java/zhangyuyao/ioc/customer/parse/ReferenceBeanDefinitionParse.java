@@ -39,7 +39,7 @@ public class ReferenceBeanDefinitionParse implements BeanDefinitionParser {
         String id = element.getAttribute("id");
 
         if (!StringUtils.isEmpty(id)) {
-            parserContext.getRegistry().registerBeanDefinition(id, beanDefinition);
+            parserContext.getRegistry().registerBeanDefinition(id, beanDefinition);//
             beanDefinition.getPropertyValues().add("id", id);
         }
 

@@ -9,7 +9,8 @@
 
     <bean id="me" class="zhangyuyao.ioc.customer.bean.Me"/>
 
-    <bean id="girl" class="zhangyuyao.ioc.customer.bean.CaoBService" scope="prototype"/>
+    <!--<bean id="girl" class="zhangyuyao.ioc.customer.bean.CaoBService" scope="prototype"/>-->
+    <bean id="girl" class="zhangyuyao.ioc.customer.bean.GirlFactoryBean"/>
 
     <!--<bean id="myBeanPostProcessor" class="zhangyuyao.ioc.customer.processor.MyBeanPostProcessor"/>-->
 </beans>
